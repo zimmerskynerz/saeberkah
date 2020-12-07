@@ -98,8 +98,8 @@
                         <option value="">Pilih Jasa Pengiriman</option>
                         <option value="jne">JNE</option>
                         <option value="tiki">TIKI</option>
-                        <option value="pos">POS INDONESIA</option>
                     </select>
+                    <input type="text" readonly class="form__input" id="hg_total" name="hg_total">
                     <button type="button" class="form__btn">Bayar</button>
                 </form>
                 <!-- end checkout -->
@@ -108,3 +108,23 @@
     </div>
 </div>
 <!-- end section -->
+<script>
+    $('#kurir').change(function() {
+        //Mengambil value dari option select provinsi asal, kabupaten, kurir, berat kemudian parameternya dikirim menggunakan ajax
+        var kab = $('#kota_tujuan').val();
+        var kurir = $('#kurir').val();
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url('pelanggan/raja_ongkir'); ?>',
+            data: {
+                'kab_id': kab,
+                'kurir': kurir
+            },
+            success: function(data) {
+                // console.log(data);
+                //jika data berconsole.log(data);hasil didapatkan, tampilkan ke dalam element div ongkir
+                $("#hg_total").val(data);
+            }
+        });
+    });
+</script>
