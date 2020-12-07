@@ -54,4 +54,22 @@ class Update_model extends CI_Model
         $this->db->where('id_trolly', $id_trolly);
         $this->db->update('tb_trolly', $data);
     }
+    function konfirmasiBayar()
+    {
+        $data = array(
+            'status' => 'Konfirmasi',
+            'tgl_bayar' => date('Y-m-d')
+        );
+        $this->db->where('id_pemesanan', $this->input->post('id_pemesanan'));
+        $this->db->update('tb_pemesanan', $data);
+    }
+    function konfirmasiTerima()
+    {
+        $data = array(
+            'status' => 'Diterima',
+            'tgl_terima' => date('Y-m-d')
+        );
+        $this->db->where('id_pemesanan', $this->input->post('id_pemesanan'));
+        $this->db->update('tb_pemesanan', $data);
+    }
 }

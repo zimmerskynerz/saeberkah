@@ -43,6 +43,12 @@ $route['pelanggan-daftar']                              = 'welcome/daftar';
 $route['pelanggan/kategori/(:any)']                     = 'pelanggan/ControllerBarang/kategori/$1';
 $route['detail_barang/(:any)']                          = 'pelanggan/ControllerBarang/detail_barang/$1';
 $route['tambah_trolly/crudcart']                        = 'pelanggan/ControllerBarang/crudcart';
+$route['pelanggan/hapuscart/(:any)']                    = 'pelanggan/ControllerBarang/hapuscart/$1';
 // Menu Keranjang Pelanggan
 $route['pelanggan/cart']                                = 'pelanggan/ControllerKeranjang/index';
 $route['pelanggan/raja_ongkir']                         = 'pelanggan/ControllerKeranjang/raja_ongkir';
+$route['pelanggan/bayar']                               = 'pelanggan/ControllerKeranjang/bayar';
+// Menu Konfirmasi
+$route['pelanggan/konfirmasi']                          = 'pelanggan/ControllerKonfirmasi/index';
+$route['pelanggan/konfirmasi/crudkonfirmasi']           = 'pelanggan/ControllerKonfirmasi/crudkonfirmasi';
+$route['pelanggan/konfirmasi/detail/(:any)']            = 'pelanggan/ControllerKonfirmasi/detail/$1';

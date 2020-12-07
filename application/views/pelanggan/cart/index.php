@@ -47,10 +47,11 @@
                                         <td><?= $Data_trolly->berat_barang ?> Kg</td>
                                         <td><span class="cart__price"><?= $Data_trolly->total_harga ?></span></td>
                                         <td>
-                                            <button class="cart__delete" type="button"><svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+                                            <a class="cart__delete" type="submit" href="<?= base_url('pelanggan/hapuscart/' . $Data_trolly->id_trolly . '') ?>">
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
                                                     <line x1='368' y1='368' x2='144' y2='144' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' />
                                                     <line x1='368' y1='144' x2='144' y2='368' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' /></svg>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -79,65 +80,34 @@
 
             <div class="col-12 col-lg-4">
                 <!-- checkout -->
-                <form action="#" class="form form--checkout">
-                    <input type="number" class="form__input" id="berat" hidden value="<?= $total_belanaja['berat_total'] * 1000 ?>" name="berat">
-                    <input type="text" class="form__input" id="id_pelanggan" hidden value="<?= $data_pelanggan['id_pelanggan'] ?>" name="id_pelanggan">
-                    <input type="text" class="form__input" id="total_belanaja" hidden value="<?= $total_belanaja['total_belanaja'] ?>" name="total_belanaja">
-
-
-                    <input type="text" class="form__input" placeholder="Penerima" id="nama_penerima" name="nama_penerima">
-                    <input type="number" class="form__input" placeholder="Nomor Telepon" id="telepon_penerima" name="telepon_penerima">
-                    <textarea type="text" class="form__input" placeholder="Alamat Lengkap" id="alamat_tujuan" name="alamat_tujuan"></textarea>
+                <?php echo form_open_multipart('pelanggan/bayar'); ?>
+                <div class="form form--checkout">
+                    <input type="number" class="form__input" id="berat" hidden value="<?= $total_belanaja['berat_total'] * 1000 ?>" name="berat" required>
+                    <input type="text" class="form__input" id="id_pelanggan" hidden value="<?= $data_pelanggan['id_pelanggan'] ?>" name="id_pelanggan" required>
+                    <input type="text" class="form__input" id="total_belanaja" hidden value="<?= $total_belanaja['total_belanaja'] ?>" name="total_belanaja" required>
+                    <input type="text" class="form__input" placeholder="Penerima" id="nama_penerima" name="nama_penerima" required>
+                    <input type="number" class="form__input" placeholder="Nomor Telepon" id="telepon_penerima" name="telepon_penerima" required>
+                    <textarea type="text" class="form__input" placeholder="Alamat Lengkap" id="alamat_tujuan" name="alamat_tujuan" required></textarea>
                     <select class="form__input" id="kota_tujuan" name="kota_tujuan" placeholder="Kota Tujuan" required>
                         <option>Pilih Kota</option>
                         <?php foreach ($data_kota as $Data_kota) : ?>
                             <option value="<?= $Data_kota->city_id ?>"><?= $Data_kota->city_name ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="number" class="form__input" placeholder="Kode Pos" id="kode_pos" name="kode_pos">
+                    <input type="number" class="form__input" placeholder="Kode Pos" id="kode_pos" name="kode_pos" required>
                     <select class="form__input" id="kurir" name="kurir" required>
                         <option value="">Pilih Jasa Pengiriman</option>
                         <option value="jne">JNE</option>
                         <option value="tiki">TIKI</option>
                     </select>
-                    <input type="text" readonly class="form__input" id="hg_total" name="hg_total">
-                    <button type="button" class="form__btn">Bayar</button>
-                </form>
+                    <input type="text" readonly class="form__input" id="hg_total" placeholder="Total Bayar" name="hg_total" required>
+                    <button type="submit" id="bayar" name="bayar" class="form__btn">Bayar</button>
+                </div>
+                <?php echo form_close(); ?>
                 <!-- end checkout -->
             </div>
         </div>
     </div>
 </div>
 <!-- end section -->
-<script>
-    $.ajaxSetup({
-        beforeSend: function(jqXHR, Obj) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; csrf_cookie_name=");
-            if (parts.length == 2)
-                Obj.data += '&<?= $this->security->get_csrf_token_name(); ?>=' + parts.pop().split(";").shift();
-        }
-    });
-    $('#kurir').change(function() {
-        //Mengambil value dari option select provinsi asal, kabupaten, kurir, berat kemudian parameternya dikirim menggunakan ajax
-        var kab = $('#kota_tujuan').val();
-        var kurir = $('#kurir').val();
-        var berat = $('#berat').val();
-        var total_belanaja = $('#total_belanaja').val();
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url('pelanggan/raja_ongkir'); ?>',
-            data: {
-                'kab_id': kab,
-                'kurir': kurir,
-                'berat': berat,
-                'total_belanaja': total_belanaja
-            },
-            success: function(data) {
-                // console.log(data);
-                //jika data berconsole.log(data);hasil didapatkan, tampilkan ke dalam element div ongkir
-                $("#hg_total").val(data);
-            }
-        });
-    });
-</script>
+<?php $this->load->view('pelanggan/cart/footer') ?>

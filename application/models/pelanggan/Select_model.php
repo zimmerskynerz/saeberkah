@@ -75,4 +75,28 @@ class Select_model extends CI_Model
         curl_close($curl);
         return $kota->rajaongkir->results;
     }
+    function getKodeTransaksi()
+    {
+        $query  = $this->db->select('max(id_pemesanan) AS max_code');
+        $query  = $this->db->from('tb_pemesanan');
+        $query  = $this->db->get();
+        return $query->row_array();
+    }
+    function getDataTrasnsaksi($id_pelanggan)
+    {
+        $query  = $this->db->select('*');
+        $query  = $this->db->from('tb_pemesanan');
+        $query  = $this->db->where('id_pelanggan', $id_pelanggan);
+        $query  = $this->db->get();
+        return $query->result();
+    }
+    function getDataTransaksi($id_pemesanan)
+    {
+        $query  = $this->db->select('*');
+        $query  = $this->db->from('tb_detail_pemesanan as A');
+        $query  = $this->db->join('tb_barang as B', 'A.id_barang=B.id_barang');
+        $query  = $this->db->where('A.id_pemesanan', $id_pemesanan);
+        $query  = $this->db->get();
+        return $query->result();
+    }
 }

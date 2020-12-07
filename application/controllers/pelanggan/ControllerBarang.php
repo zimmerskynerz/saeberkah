@@ -88,6 +88,12 @@ class ControllerBarang extends CI_Controller
             endif;
         endif;
     }
+
+    public function hapuscart($id)
+    {
+        $this->db->delete('tb_trolly', array('id_trolly' => $id));
+        redirect('pelanggan/cart');
+    }
 }
         
     /* End of file  ControllerBarang.php */

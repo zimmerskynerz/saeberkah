@@ -30,8 +30,8 @@
                             <li class="header__nav-item">
                                 <a class="header__nav-link" href="#" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
                                 <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu2">
-                                    <li><a href="article.html">Keranjang</a></li>
-                                    <li><a href="interview.html">Transaksi</a></li>
+                                    <li><a href="<?= base_url('pelanggan/cart') ?>">Keranjang</a></li>
+                                    <li><a href="<?= base_url('pelanggan/konfirmasi') ?>">Transaksi</a></li>
                                     <li><a href="interview.html">Profile</a></li>
                                     <li><a href="<?= base_url('pelanggan-logout') ?>">Logout</a></li>
                                 </ul>

@@ -37,7 +37,6 @@
                                           <th style="text-align: center;">Nomor Resi</th>
                                           <th style="text-align: center;">Penerima</th>
                                           <th style="text-align: center;">Alamat</th>
-                                          <th style="text-align: center;">Ekspedisi</th>
                                           <th style="text-align: center;">Total</th>
                                           <th style="text-align: center;">Status</th>
                                           <th style="text-align: center;">Aksi</th>
@@ -52,7 +51,6 @@
                                               <td><?= $Data_pesanan->no_resi ?></td>
                                               <td><?= $Data_pesanan->nama_penerima ?></td>
                                               <td><?= $Data_pesanan->alamat_tujuan ?></td>
-                                              <td style="text-align: center;"><?= $Data_pesanan->ekspedisi ?> - <?= $Data_pesanan->jenis_ekspedisi ?></td>
                                               <td style="text-align: right;">
                                                   <?= $Data_pesanan->total_bayar ?>,-
                                               </td>

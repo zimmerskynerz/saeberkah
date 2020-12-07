@@ -8,7 +8,6 @@ class Update_model extends CI_Model
         $data = array(
             'status' => 'Dikirim',
             'tgl_konfirmasi' => date('Y-m-d'),
-            'tgl_kirim' => date('Y-m-d'),
             'no_resi' => $this->input->post('no_resi')
         );
         $this->db->where('id_pemesanan', $id_pemesanan);

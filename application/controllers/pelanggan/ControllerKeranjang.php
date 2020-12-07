@@ -70,6 +70,32 @@ class ControllerKeranjang extends CI_Controller
         echo $hg_total;
         // echo $ongkir;
     }
+    public function bayar()
+    {
+        if (isset($_POST['bayar'])) :
+            $cek_id = $this->select_model->getKodeTransaksi();
+            $max_id = $cek_id['max_code'];
+            $max_fix = (int) substr($max_id, 1, 4);
+            $max_id_pemesanan = $max_fix + 1;
+            $tahun = date('Y');
+            $bulan = date('m');
+            $tgl = date('d');
+            $id_pemesanan = $tahun . $bulan . $tgl . "P" . sprintf("%04s", $max_id_pemesanan);
+            $this->insert_model->tambah_transaksi($id_pemesanan);
+            $cek_trolly = $this->db->get_where('tb_trolly', ['id_pelanggan' => $this->input->post('id_pelanggan')])->result();
+            foreach ($cek_trolly as $Cek_trolly) :
+                $data = array(
+                    'id_pemesanan' => $id_pemesanan,
+                    'id_barang'    => $Cek_trolly->id_barang,
+                    'jumlah_beli'    => $Cek_trolly->jumlah,
+                    'total_harga'    => $Cek_trolly->total_harga
+                );
+                $this->db->insert('tb_detail_pemesanan', $data);
+            endforeach;
+            $this->db->delete('tb_trolly', ['id_pelanggan' => $this->input->post('id_pelanggan')]);
+            redirect('pelanggan/konfirmasi');
+        endif;
+    }
 }
         
     /* End of file  ControllerKeranjang.php */

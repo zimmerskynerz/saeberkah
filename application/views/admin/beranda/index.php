@@ -26,7 +26,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?= $jumlah_pesanan?></h3>
+                            <h3><?= $jumlah_pesanan ?></h3>
 
                             <p>Jumlah Pesanan Masuk</p>
                         </div>
@@ -41,7 +41,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3><?= $jumlah_pelanggan?></h3>
+                            <h3><?= $jumlah_pelanggan ?></h3>
 
                             <p>Jumlah Pelanggan</p>
                         </div>
@@ -59,57 +59,55 @@
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-12">
-                      <div class="card">
-                          <div class="card-header">
-                              <h3 class="card-title">Daftar Pesanan Saeberkah Furniture</h3>
-                          </div>
-                          <!-- /.card-header -->
-                          <div class="card-body">
-                              <table id="example1" class="table table-bordered table-striped">
-                                  <thead>
-                                      <tr>
-                                          <th style="width: 12px; text-align: center;">No</th>
-                                          <th style="text-align: center;">Kode Pesanan</th>
-                                          <th style="text-align: center;">Nomor Resi</th>
-                                          <th style="text-align: center;">Penerima</th>
-                                          <th style="text-align: center;">Alamat</th>
-                                          <th style="text-align: center;">Ekspedisi</th>
-                                          <th style="text-align: center;">Total</th>
-                                          <th style="text-align: center;">Status</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      <?php $no = 1; ?>
-                                      <?php foreach ($data_pesanan as $Data_pesanan) : ?>
-                                          <tr>
-                                              <td style="width: 12px; text-align: center;"><?= $no ?></td>
-                                              <td><?= $Data_pesanan->id_pemesanan ?></td>
-                                              <td><?= $Data_pesanan->no_resi ?></td>
-                                              <td><?= $Data_pesanan->nama_penerima ?></td>
-                                              <td><?= $Data_pesanan->alamat_tujuan ?></td>
-                                              <td style="text-align: center;"><?= $Data_pesanan->ekspedisi ?> - <?= $Data_pesanan->jenis_ekspedisi ?></td>
-                                              <td style="text-align: right;">
-                                                  <?= $Data_pesanan->total_bayar ?>,-
-                                              </td>
-                                              <td style="width: 12px; text-align: center;"><?= $Data_pesanan->status ?></td>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Daftar Pesanan Saeberkah Furniture</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 12px; text-align: center;">No</th>
+                                        <th style="text-align: center;">Kode Pesanan</th>
+                                        <th style="text-align: center;">Nomor Resi</th>
+                                        <th style="text-align: center;">Penerima</th>
+                                        <th style="text-align: center;">Alamat</th>
+                                        <th style="text-align: center;">Total</th>
+                                        <th style="text-align: center;">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($data_pesanan as $Data_pesanan) : ?>
+                                        <tr>
+                                            <td style="width: 12px; text-align: center;"><?= $no ?></td>
+                                            <td><?= $Data_pesanan->id_pemesanan ?></td>
+                                            <td><?= $Data_pesanan->no_resi ?></td>
+                                            <td><?= $Data_pesanan->nama_penerima ?></td>
+                                            <td><?= $Data_pesanan->alamat_tujuan ?></td>
+                                            <td style="text-align: right;">
+                                                <?= $Data_pesanan->total_bayar ?>,-
+                                            </td>
+                                            <td style="width: 12px; text-align: center;"><?= $Data_pesanan->status ?></td>
 
-                                          </tr><?php $no++; ?>
-                                      <?php endforeach; ?>
-                                  </tbody>
-                              </table>
-                          </div>
-                          <!-- /.card-body -->
-                      </div>
-                      <!-- /.card -->
-                  </div>
-                  <!-- /.col -->
-              </div>
-              <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-      </section>
+                                        </tr><?php $no++; ?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
     <!-- /.content -->
 </div>
