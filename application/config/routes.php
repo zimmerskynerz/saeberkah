@@ -42,4 +42,7 @@ $route['pelanggan-daftar']                              = 'welcome/daftar';
 // Menu Produk Kategori
 $route['pelanggan/kategori/(:any)']                     = 'pelanggan/ControllerBarang/kategori/$1';
 $route['detail_barang/(:any)']                          = 'pelanggan/ControllerBarang/detail_barang/$1';
-$route['detail_barang/crudcart']                        = 'pelanggan/ControllerBarang/crudcart';
+$route['tambah_trolly/crudcart']                        = 'pelanggan/ControllerBarang/crudcart';
+// Menu Keranjang Pelanggan
+$route['pelanggan/cart']                                = 'pelanggan/ControllerKeranjang/index';
+$route['pelanggan/raja_ongkir']                         = 'pelanggan/ControllerKeranjang/raja_ongkir';

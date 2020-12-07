@@ -41,4 +41,17 @@ class Update_model extends CI_Model
             $this->db->update('tbl_sip', $data);
         endif;
     }
+    function ubah_trolly($id_trolly, $jml_barang)
+    {
+        $harga_barang   = $this->input->post('harga_barang');
+        $jml_beli       = $this->input->post('jml_beli');
+        $jml_sekarang   = $jml_barang + $jml_beli;
+        $total_sekarang = $jml_sekarang * $harga_barang;
+        $data = array(
+            'jumlah'      => $jml_sekarang,
+            'total_harga' => $total_sekarang
+        );
+        $this->db->where('id_trolly', $id_trolly);
+        $this->db->update('tb_trolly', $data);
+    }
 }

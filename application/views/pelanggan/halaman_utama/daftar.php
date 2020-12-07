@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +16,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>css/main.css">
 
 	<!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/') ?>dist/img/AdminLTELogo.png" />
+	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/') ?>dist/img/AdminLTELogo.png" />
 
 
 	<meta name="description" content="">
@@ -24,6 +25,7 @@
 	<title>DAFTAR | TOKO ONLINE SAEBERKAH FURNITURE</title>
 
 </head>
+
 <body>
 	<!-- sign in -->
 	<div class="sign section--full-bg" data-bg="img/bg2.jpg">
@@ -32,9 +34,9 @@
 				<div class="col-12">
 					<div class="sign__content">
 						<!-- registration form -->
-						<form class="sign__form" action="<?=base_url('pelanggan-cruddaftar')?>" method="POST">
-                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
-                            <a href="<?=base_url('/')?>" class="sign__logo">
+						<form class="sign__form" action="<?= base_url('pelanggan-cruddaftar') ?>" method="POST">
+							<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
+							<a href="<?= base_url('/') ?>" class="sign__logo">
 								<img src="<?= base_url('assets/') ?>dist/img/AdminLTELogo.png" alt="">
 							</a>
 							<div class="sign__group">
@@ -77,4 +79,5 @@
 	<script src="<?= base_url('assets/') ?>js/jquery.mCustomScrollbar.min.js"></script>
 	<script src="<?= base_url('assets/') ?>js/main.js"></script>
 </body>
+
 </html>

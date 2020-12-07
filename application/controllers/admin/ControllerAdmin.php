@@ -27,7 +27,7 @@ class ControllerAdmin extends CI_Controller
                 'data_pesanan' => $data_pesanan,
                 'jumlah_pesanan' => $jml_pesanan,
                 'jumlah_pelanggan' => $jumlah_pelanggan
-                
+
             );
             $this->load->view('admin/include/index', $data);
         else :
