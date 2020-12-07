@@ -40,6 +40,8 @@ class ControllerKeranjang extends CI_Controller
         $kota_asal = '113';
         $id_kabupaten = $this->input->post('kab_id');;
         $kurir = $this->input->post('kurir');
+        $berat = $this->input->post('berat');
+        $total_belanaja = $this->input->post('total_belanaja');
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
@@ -49,7 +51,7 @@ class ControllerKeranjang extends CI_Controller
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "origin=" . $kota_asal . "&destination=" . $id_kabupaten . "&weight=10000&courier=" . $kurir . "",
+            CURLOPT_POSTFIELDS => "origin=" . $kota_asal . "&destination=" . $id_kabupaten . "&weight=" . $berat . "&courier=" . $kurir . "",
             CURLOPT_HTTPHEADER => array(
                 'content-type: application/x-www-form-urlencoded',
                 'key: fddeab3d6d3e203bb4c1f16f74c6e6c0'
@@ -59,8 +61,12 @@ class ControllerKeranjang extends CI_Controller
         $nilai = json_decode($response, true);
         $k = 0;
         $i = 1;
-        $ongkir = $nilai['rajaongkir']['results'][$k]['costs'][$i]['cost'][$k]['value'];
-        $hg_total  = $ongkir + 260000;
+        if ($kurir == 'tiki') :
+            $ongkir = $nilai['rajaongkir']['results'][$k]['costs'][$k]['cost'][$k]['value'];
+        else :
+            $ongkir = $nilai['rajaongkir']['results'][$k]['costs'][$i]['cost'][$k]['value'];
+        endif;
+        $hg_total  = $ongkir + $total_belanaja;
         echo $hg_total;
         // echo $ongkir;
     }
