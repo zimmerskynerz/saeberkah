@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2020 at 08:19 PM
+-- Generation Time: Dec 08, 2020 at 02:36 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.25
 
@@ -102,7 +102,8 @@ INSERT INTO `tb_detail_pemesanan` (`id_pemesanan`, `id_barang`, `jumlah_beli`, `
 ('20201116P0202', 'B0002', 1, 25000),
 ('20201116P0202', 'B0003', 1, 5000),
 ('20201120P0202', 'B0003', 1, 5000),
-('20201125P0202', 'B0003', 1, 5000);
+('20201125P0202', 'B0003', 1, 5000),
+('20201207P0202', 'B0004', 2, 24444);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,8 @@ CREATE TABLE `tb_kategori` (
 INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
 ('K01', 'Cinderamata'),
 ('K02', 'Set Kursi'),
-('K03', 'Set Meja Makan');
+('K03', 'Set Meja Makan'),
+('K04', 'Set Tempat TIdur');
 
 -- --------------------------------------------------------
 
@@ -131,14 +133,12 @@ INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
 --
 
 CREATE TABLE `tb_konfirmasi` (
-  `id_konfirmasi` varchar(15) DEFAULT NULL,
+  `id_konfirmasi` int(5) NOT NULL,
   `id_pemesanan` varchar(15) DEFAULT NULL,
   `id_pelanggan` varchar(5) DEFAULT NULL,
   `nama_bank` text DEFAULT NULL,
   `nomor_rekening` text DEFAULT NULL,
   `atas_nama` text DEFAULT NULL,
-  `nominal` int(11) DEFAULT NULL,
-  `keterangan` text DEFAULT NULL,
   `bukti_pembayaran` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -146,13 +146,8 @@ CREATE TABLE `tb_konfirmasi` (
 -- Dumping data for table `tb_konfirmasi`
 --
 
-INSERT INTO `tb_konfirmasi` (`id_konfirmasi`, `id_pemesanan`, `id_pelanggan`, `nama_bank`, `nomor_rekening`, `atas_nama`, `nominal`, `keterangan`, `bukti_pembayaran`) VALUES
-('20200829TF001', '20200829P0001', 'U0004', 'BNI', '08011232321', 'TRI PUJI N', 95000, '', '2.png'),
-('20201113TF021', '20201113P0201', 'U0005', 'BRI', '59218282737389', 'Maulidya Rahma', 39000, 'Transfer totebag', 'IMG-20201113-WA0011.jpg'),
-('20201113TF021', '20201113P0202', 'U0006', 'BRI', '567899095532268', 'Dea', 39000, 'Transfer', 'IMG-20201113-WA0035.jpg'),
-('20201114TF021', '20201114P0202', 'U0007', 'BRI', '592134567890977', 'lala', 19000, 'transfer', 'DSC_0009.JPG'),
-('20201116TF021', '20201116P0202', 'U0007', 'Bca', '123456789', 'Lala', 15000, 'Tf', 'IMG-20201115-WA0104.jpg'),
-('20201120TF021', '20201120P0202', 'U0006', 'BRI', '592134567890977', 'dea', 19000, 'transfer', 'DSC_0012.JPG');
+INSERT INTO `tb_konfirmasi` (`id_konfirmasi`, `id_pemesanan`, `id_pelanggan`, `nama_bank`, `nomor_rekening`, `atas_nama`, `bukti_pembayaran`) VALUES
+(1, '20201207P0202', 'U0008', 'BCA', '092839839', 'Muhammad Yusuf Aji Wijaya', '5d983690239d4262b2ffa981309b4f22.jpg');
 
 -- --------------------------------------------------------
 
@@ -194,22 +189,17 @@ CREATE TABLE `tb_pemesanan` (
   `nama_penerima` text DEFAULT NULL,
   `telepon_penerima` text DEFAULT NULL,
   `alamat_tujuan` text DEFAULT NULL,
-  `kota_tujuan` text DEFAULT NULL,
-  `provinsi_tujuan` text DEFAULT NULL,
   `kode_pos` int(11) DEFAULT NULL,
   `berat_total` text DEFAULT NULL,
   `ekspedisi` text DEFAULT NULL,
-  `jenis_ekspedisi` text DEFAULT NULL,
   `no_resi` text DEFAULT NULL,
   `ongkir` int(11) DEFAULT NULL,
-  `jumlah` int(11) DEFAULT NULL,
   `sub_bayar` int(11) DEFAULT NULL,
   `total_bayar` int(11) DEFAULT NULL,
   `status` text DEFAULT NULL,
   `tgl_pesan` datetime DEFAULT NULL,
   `tgl_bayar` datetime DEFAULT NULL,
   `tgl_konfirmasi` datetime DEFAULT NULL,
-  `tgl_kirim` datetime DEFAULT NULL,
   `tgl_terima` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -217,15 +207,16 @@ CREATE TABLE `tb_pemesanan` (
 -- Dumping data for table `tb_pemesanan`
 --
 
-INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_pelanggan`, `nama_penerima`, `telepon_penerima`, `alamat_tujuan`, `kota_tujuan`, `provinsi_tujuan`, `kode_pos`, `berat_total`, `ekspedisi`, `jenis_ekspedisi`, `no_resi`, `ongkir`, `jumlah`, `sub_bayar`, `total_bayar`, `status`, `tgl_pesan`, `tgl_bayar`, `tgl_konfirmasi`, `tgl_kirim`, `tgl_terima`) VALUES
-('20200829P0001', 'U0004', 'Tri Puji', '081326002385', 'Simbang RT 04 RW 05 Bebengan, Boja', 'Kendal', 'Jawa Tengah', 51381, '0.7', 'jne', 'YES', 'NO0001283477JNE344', 15000, 2, 80000, 95000, 'Diterima', '2020-08-29 00:00:00', '2020-08-29 20:08:34', NULL, '2020-08-30 08:08:01', '2020-08-30 08:08:23'),
-('20200830P0201', 'U0004', 'Tri Puji', '081326002385', 'Simbang', 'Kendal', 'Jawa Tengah', 51381, '0.05', 'tiki', 'ONS', NULL, 15000, 1, 60000, 75000, 'Belum Konfirmasi', '2020-08-30 01:08:07', NULL, NULL, NULL, NULL),
-('20201113P0201', 'U0005', 'Maulidya', '085713566277', 'Daren', 'Jepara', 'Jawa Tengah', 54323, '0.5', 'jne', 'YES', 'TIO01283477JNE344 ', 14000, 1, 25000, 39000, 'Dikirim', '2020-11-13 18:11:37', '2020-11-13 18:11:16', '2020-12-04 00:00:00', '2020-12-04 00:00:00', NULL),
-('20201113P0202', 'U0006', 'Dea', '085731665772', 'Daren', 'Jepara', 'Jawa Tengah', 59433, '0.5', 'jne', 'YES', NULL, 14000, 1, 25000, 39000, 'Sudah Konfirmasi', '2020-11-13 22:11:58', '2020-11-13 22:11:48', NULL, NULL, NULL),
-('20201114P0202', 'U0007', 'lala widy', '081222333444', 'daren, rt 03, rw 01', 'Jepara', 'Jawa Tengah', 54322, '0.05', 'jne', 'YES', NULL, 14000, 1, 5000, 19000, 'Sudah Konfirmasi', '2020-11-14 21:11:34', '2020-11-14 22:11:44', NULL, NULL, NULL),
-('20201116P0202', 'U0007', 'lala widy', '081222333444', 'Daren', 'Jepara', 'Jawa Tengah', 52334, '0.05', 'jne', 'OKE', NULL, 10000, 1, 5000, 15000, 'Sudah Konfirmasi', '2020-11-16 15:11:38', '2020-11-16 15:11:14', NULL, NULL, NULL),
-('20201120P0202', 'U0006', 'Dea', '085731665772', 'daren', 'Jepara', 'Jawa Tengah', 54332, '0.05', 'pos', 'Express Next Day Barang', NULL, 14000, 1, 5000, 19000, 'Diterima', '2020-11-20 20:11:53', '2020-11-20 00:00:00', '2020-11-20 00:00:00', NULL, NULL),
-('20201125P0202', 'U0006', 'Dea', '085731665772', 'Daren', 'Jepara', 'Jawa Tengah', 54332, '0.05', 'tiki', 'ECO', NULL, 6000, 1, 5000, 11000, 'Diterima', '2020-11-25 21:11:05', '2020-11-25 00:00:00', '2020-11-25 00:00:00', NULL, NULL);
+INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_pelanggan`, `nama_penerima`, `telepon_penerima`, `alamat_tujuan`, `kode_pos`, `berat_total`, `ekspedisi`, `no_resi`, `ongkir`, `sub_bayar`, `total_bayar`, `status`, `tgl_pesan`, `tgl_bayar`, `tgl_konfirmasi`, `tgl_terima`) VALUES
+('20200829P0001', 'U0004', 'Tri Puji', '081326002385', 'Simbang RT 04 RW 05 Bebengan, Boja', 51381, '0.7', 'jne', 'NO0001283477JNE344', 15000, 80000, 95000, 'Diterima', '2020-08-29 00:00:00', '2020-08-29 20:08:34', NULL, '2020-08-30 08:08:23'),
+('20200830P0201', 'U0004', 'Tri Puji', '081326002385', 'Simbang', 51381, '0.05', 'tiki', NULL, 15000, 60000, 75000, 'Konfirmasi', '2020-08-30 01:08:07', NULL, NULL, NULL),
+('20201113P0201', 'U0005', 'Maulidya', '085713566277', 'Daren', 54323, '0.5', 'jne', 'TIO01283477JNE344 ', 14000, 25000, 39000, 'Dikirim', '2020-11-13 18:11:37', '2020-11-13 18:11:16', '2020-12-04 00:00:00', NULL),
+('20201113P0202', 'U0006', 'Dea', '085731665772', 'Daren', 59433, '0.5', 'jne', NULL, 14000, 25000, 39000, 'Konfirmasi', '2020-11-13 22:11:58', '2020-11-13 22:11:48', NULL, NULL),
+('20201114P0202', 'U0007', 'lala widy', '081222333444', 'daren, rt 03, rw 01', 54322, '0.05', 'jne', NULL, 14000, 5000, 19000, 'Konfirmasi', '2020-11-14 21:11:34', '2020-11-14 22:11:44', NULL, NULL),
+('20201116P0202', 'U0007', 'lala widy', '081222333444', 'Daren', 52334, '0.05', 'jne', NULL, 10000, 5000, 15000, 'Konfirmasi', '2020-11-16 15:11:38', '2020-11-16 15:11:14', NULL, NULL),
+('20201120P0202', 'U0006', 'Dea', '085731665772', 'daren', 54332, '0.05', 'pos', NULL, 14000, 5000, 19000, 'Diterima', '2020-11-20 20:11:53', '2020-11-20 00:00:00', '2020-11-20 00:00:00', NULL),
+('20201125P0202', 'U0006', 'Dea', '085731665772', 'Daren', 54332, '0.05', 'tiki', NULL, 6000, 5000, 11000, 'Diterima', '2020-11-25 21:11:05', '2020-11-25 00:00:00', '2020-11-25 00:00:00', NULL),
+('20201207P0202', 'U0008', 'Aji Wijaya', '08112904711', 'Kudus', 78988, '1000', 'jne', '120928hh7387j', 36000, 24444, 60444, 'Diterima', '2020-12-07 00:00:00', '2020-12-07 00:00:00', '2020-12-08 00:00:00', '2020-12-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -246,7 +237,8 @@ CREATE TABLE `tb_trolly` (
 --
 
 INSERT INTO `tb_trolly` (`id_trolly`, `id_pelanggan`, `id_barang`, `jumlah`, `total_harga`) VALUES
-(11, 'U0006', 'B0001', 1, 10000);
+(11, 'U0006', 'B0001', 1, 10000),
+(12, '', 'B0004', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -271,6 +263,12 @@ ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
+-- Indexes for table `tb_konfirmasi`
+--
+ALTER TABLE `tb_konfirmasi`
+  ADD PRIMARY KEY (`id_konfirmasi`);
+
+--
 -- Indexes for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
@@ -293,10 +291,16 @@ ALTER TABLE `tb_trolly`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_konfirmasi`
+--
+ALTER TABLE `tb_konfirmasi`
+  MODIFY `id_konfirmasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tb_trolly`
 --
 ALTER TABLE `tb_trolly`
-  MODIFY `id_trolly` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_trolly` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
