@@ -63,7 +63,7 @@ class ControllerBarang extends CI_Controller
         else :
             $data = array(
                 'folder'      => 'produk',
-                'halaman'       => 'produk',
+                'halaman'       => 'produk-2',
                 'data_pelanggan' => $cek_data,
                 'data_kategori' => $data_kategori,
                 'detail_barang' => $detail_barang

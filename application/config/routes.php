@@ -33,7 +33,7 @@ $route['admin/logout']                                  = 'admin/ControllerAdmin
 
 // Menu Milik Pelanggan
 // Menu Halaman Utama Tanpa Login
-$route['/']                                             = 'welcome/index';
+$route['pelanggan']                                     = 'welcome/index';
 $route['pelanggan-logout']                              = 'welcome/logout';
 $route['login-pelanggan']                               = 'welcome/login';
 $route['pelanggan-cek_login']                           = 'welcome/cek_login';

@@ -51,7 +51,7 @@ class Welcome extends CI_Controller
 	{
 		$cek_data = $this->db->get_where('tb_pelanggan', ['email' => $this->session->userdata('email')])->row_array();
 		if ($cek_data > 0) :
-			redirect('/');
+			redirect('pelanggan');
 		else :
 			$this->load->view('pelanggan/halaman_utama/login');
 		endif;
@@ -73,8 +73,8 @@ class Welcome extends CI_Controller
 			$this->session->set_userdata($data_login);
 			echo "<script>
 			alert('Selamat Datang Pelanggan!');
+			window.location = 'pelanggan'
 		  </script>";
-			redirect('/');
 		else :
 			echo "<script>
 			alert('Warning! Password atau Username Salah!');
@@ -86,7 +86,7 @@ class Welcome extends CI_Controller
 	{
 		$cek_data = $this->db->get_where('tb_pelanggan', ['email' => $this->session->userdata('email')])->row_array();
 		if ($cek_data > 0) :
-			redirect('/');
+			redirect('pelanggan');
 		else :
 			$this->load->view('pelanggan/halaman_utama/daftar');
 		endif;
