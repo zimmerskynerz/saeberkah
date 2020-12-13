@@ -24,7 +24,7 @@ class Select_model extends CI_Model
         $query  = $this->db->select('*');
         $query  = $this->db->from('tb_pemesanan as A');
         $query  = $this->db->join('tb_konfirmasi as B', 'A.id_pemesanan=B.id_pemesanan');
-        $query  = $this->db->where('A.status', 'Sudah Konfirmasi');
+        $query  = $this->db->where('A.status', 'Konfirmasi');
         $query  = $this->db->get();
         return  $query->result();
     }

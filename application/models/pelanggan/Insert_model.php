@@ -84,5 +84,5 @@ class Insert_model extends CI_Model
             );
             $this->db->insert('tb_konfirmasi', $data);
         }
-    }
+    } 
 }

@@ -108,7 +108,7 @@ class ControllerKonfirmasi extends CI_Controller
 
         $userkey = 'ko394x';
         $passkey = 'fotinq1g7q';
-        $telepon = '0895411547434';
+        $telepon = '082227951853';
         $message = 'Halo, ada pesanan baru dari' . $nama_penerima . ' kode transaksi ' . $id_pemesanan . '. ' . PHP_EOL . ' Silahkan login kedalam sistem untuk konfirmasi pemesanan.';
         $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
         $curlHandle = curl_init();
@@ -135,7 +135,7 @@ class ControllerKonfirmasi extends CI_Controller
 
         $userkey = 'ko394x';
         $passkey = 'fotinq1g7q';
-        $telepon = '0895411547434';
+        $telepon = '082227951853';
         $message = 'Halo, pesanan baru dari' . $nama_penerima . ' kode transaksi ' . $id_pemesanan . '. ' . PHP_EOL . ' Diterima.';
         $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
         $curlHandle = curl_init();
