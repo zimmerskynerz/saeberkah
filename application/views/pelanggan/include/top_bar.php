@@ -9,7 +9,7 @@
                         <span></span>
                     </button>
 
-                    <a href="<?= base_url('/') ?>" class="header__logo">
+                    <a href="<?= base_url('pelanggan') ?>" class="header__logo">
                         <img src="<?= base_url('assets/') ?>dist/img/sae-logo.png" alt="">
                     </a>
 
@@ -32,7 +32,7 @@
                                 <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu2">
                                     <li><a href="<?= base_url('pelanggan/cart') ?>">Keranjang</a></li>
                                     <li><a href="<?= base_url('pelanggan/konfirmasi') ?>">Transaksi</a></li>
-                                    <li><a href="interview.html">Profile</a></li>
+                                    <!--<li><a href="interview.html">Profile</a></li>-->
                                     <li><a href="<?= base_url('pelanggan-logout') ?>">Logout</a></li>
                                 </ul>
                             </li>

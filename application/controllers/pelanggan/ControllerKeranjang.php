@@ -13,6 +13,7 @@ class ControllerKeranjang extends CI_Controller
     }
     public function index()
     {
+        $data_kategori = $this->select_model->getAllKategori();
         $cek_data = $this->db->get_where('tb_pelanggan', ['email' => $this->session->userdata('email')])->row_array();
         if ($cek_data > 0) :
             $id_pelanggan = $cek_data['id_pelanggan'];
@@ -26,6 +27,7 @@ class ControllerKeranjang extends CI_Controller
                 'folder'      => 'cart',
                 'halaman'       => 'index',
                 'data_pelanggan' => $cek_data,
+                'data_kategori' => $data_kategori,
                 'data_trolly' => $data_trolly,
                 'total_belanaja' => $total_belanaja,
                 'data_kota' => $kota
@@ -75,8 +77,12 @@ class ControllerKeranjang extends CI_Controller
         if (isset($_POST['bayar'])) :
             $cek_id = $this->select_model->getKodeTransaksi();
             $max_id = $cek_id['max_code'];
-            $max_fix = (int) substr($max_id, 1, 4);
+            $max_fix = (int) substr($max_id, -4);
             $max_id_pemesanan = $max_fix + 1;
+            // var_dump($max_fix);
+            // var_dump($cek_id);
+            // var_dump($max_id_pemesanan);
+            // die;
             $tahun = date('Y');
             $bulan = date('m');
             $tgl = date('d');

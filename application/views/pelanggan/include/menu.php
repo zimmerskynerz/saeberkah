@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="header__content">
                     <div class="header__actions header__actions--2">
-                        <a href="checkout.html" class="header__link">
+                        <a href="<?= base_url('pelanggan/cart')?>" class="header__link">
                             <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
                                 <circle cx='176' cy='416' r='16' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' />
                                 <circle cx='400' cy='416' r='16' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' />
