@@ -38,6 +38,7 @@
                                           <th style="text-align: center;">Penerima</th>
                                           <th style="text-align: center;">Alamat</th>
                                           <th style="text-align: center;">Total</th>
+                                          <th style="text-align: center;">Bukti</th>
                                           <th style="text-align: center;">Status</th>
                                           <th style="text-align: center;">Aksi</th>
                                       </tr>
@@ -54,6 +55,7 @@
                                               <td style="text-align: right;">
                                                   <?= $Data_pesanan->total_bayar ?>,-
                                               </td>
+                                              <td style="text-align: center;"><img class="avatar zoom" src="<?= base_url('assets/') ?>images/bukti/<?= $Data_pesanan->bukti_pembayaran ?>" width="25%" alt="avatar"></td>
                                               <td style="width: 12px; text-align: center;"><?= $Data_pesanan->status ?></td>
                                               <td style="text-align: center;">
                                                   <?php if ($Data_pesanan->status == 'Diterima' or $Data_pesanan->status == 'Dikirim') : ?>

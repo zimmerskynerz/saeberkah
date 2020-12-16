@@ -42,7 +42,7 @@
 							<li style="text-align: center;">
 								<h3>Jumlah Beli</h3>
 							</li>
-							<input type="number" style="width: 230px; font-size: 16px;" class="form__input" placeholder="Jumlah Beli" id="jml_beli" name="jml_beli">
+							<input type="number" style="width: 230px; font-size: 16px;" class="form__input" placeholder="Jumlah Beli" id="jml_beli" min="1" max="100" require name="jml_beli">
 							<input type="text" class="form-control" hidden value="<?= $data_pelanggan['id_pelanggan'] ?>" placeholder="Jumlah Beli" id="id_pelanggan" name="id_pelanggan">
 							<input type="text" class="form-control" hidden value="<?= $detail_barang['id_barang'] ?>" placeholder="Jumlah Beli" id="id_barang" name="id_barang">
 							<input type="text" class="form-control" hidden value="<?= $detail_barang['harga_barang'] ?>" placeholder="Jumlah Beli" id="harga_barang" name="harga_barang">

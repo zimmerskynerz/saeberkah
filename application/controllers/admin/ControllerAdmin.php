@@ -17,7 +17,6 @@ class ControllerAdmin extends CI_Controller
         if ($cek_data > 0) :
             $data_pesanan = $this->select_model->getDataPesanan();
             $jml_pesanan = count($this->select_model->getJmlPesanan());
-
             $data_pelanggan = $this->select_model->getAllPelanggan();
             $jumlah_pelanggan = count($data_pelanggan);
             $data = array(

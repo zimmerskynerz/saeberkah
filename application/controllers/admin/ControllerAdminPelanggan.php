@@ -39,7 +39,7 @@ class ControllerAdminPelanggan extends CI_Controller
             $data_pesanan = $this->select_model->getDataPesanan();
             $jml_pesanan = count($this->select_model->getJmlPesanan());
             // echo '<pre>';
-            // var_dump($jml_pesanan);
+            // var_dump($data_pesanan);
             // die;
             $data = array(
                 'folder'  => 'pelanggan',

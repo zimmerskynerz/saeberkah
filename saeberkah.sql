@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2020 at 02:36 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.25
+-- Waktu pembuatan: 16 Des 2020 pada 04.16
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.3.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_admin`
+-- Struktur dari tabel `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_admin`
+-- Dumping data untuk tabel `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `nama_lengkap`, `email`, `telepon`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `nama_lengkap`, `ema
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_barang`
+-- Struktur dari tabel `tb_barang`
 --
 
 CREATE TABLE `tb_barang` (
@@ -64,7 +64,7 @@ CREATE TABLE `tb_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_barang`
+-- Dumping data untuk tabel `tb_barang`
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `jenis_barang`, `ukuran_barang`, `berat_barang`, `ket_barang`, `harga_barang`, `gambar_barang`, `stok_barang`) VALUES
@@ -75,7 +75,7 @@ INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `jenis_barang`, `ukuran_bar
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_detail_pemesanan`
+-- Struktur dari tabel `tb_detail_pemesanan`
 --
 
 CREATE TABLE `tb_detail_pemesanan` (
@@ -86,7 +86,7 @@ CREATE TABLE `tb_detail_pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_detail_pemesanan`
+-- Dumping data untuk tabel `tb_detail_pemesanan`
 --
 
 INSERT INTO `tb_detail_pemesanan` (`id_pemesanan`, `id_barang`, `jumlah_beli`, `total_harga`) VALUES
@@ -103,12 +103,13 @@ INSERT INTO `tb_detail_pemesanan` (`id_pemesanan`, `id_barang`, `jumlah_beli`, `
 ('20201116P0202', 'B0003', 1, 5000),
 ('20201120P0202', 'B0003', 1, 5000),
 ('20201125P0202', 'B0003', 1, 5000),
-('20201207P0202', 'B0004', 2, 24444);
+('20201207P0202', 'B0004', 2, 24444),
+('20201216P0202', 'B0003', 1, 5000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kategori`
+-- Struktur dari tabel `tb_kategori`
 --
 
 CREATE TABLE `tb_kategori` (
@@ -117,7 +118,7 @@ CREATE TABLE `tb_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_kategori`
+-- Dumping data untuk tabel `tb_kategori`
 --
 
 INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
@@ -129,7 +130,7 @@ INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_konfirmasi`
+-- Struktur dari tabel `tb_konfirmasi`
 --
 
 CREATE TABLE `tb_konfirmasi` (
@@ -143,16 +144,17 @@ CREATE TABLE `tb_konfirmasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_konfirmasi`
+-- Dumping data untuk tabel `tb_konfirmasi`
 --
 
 INSERT INTO `tb_konfirmasi` (`id_konfirmasi`, `id_pemesanan`, `id_pelanggan`, `nama_bank`, `nomor_rekening`, `atas_nama`, `bukti_pembayaran`) VALUES
-(1, '20201207P0202', 'U0008', 'BCA', '092839839', 'Muhammad Yusuf Aji Wijaya', '5d983690239d4262b2ffa981309b4f22.jpg');
+(1, '20201207P0202', 'U0008', 'BCA', '092839839', 'Muhammad Yusuf Aji Wijaya', '5d983690239d4262b2ffa981309b4f22.jpg'),
+(2, '20201216P0202', 'U0008', 'BCA', '031928738', 'Muhammad Yusuf Aji Wijaya', 'fc62219856ae30116f9c0a523b9197a5.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pelanggan`
+-- Struktur dari tabel `tb_pelanggan`
 --
 
 CREATE TABLE `tb_pelanggan` (
@@ -166,7 +168,7 @@ CREATE TABLE `tb_pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_pelanggan`
+-- Dumping data untuk tabel `tb_pelanggan`
 --
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `username`, `password`, `nama_lengkap`, `email`, `telepon`, `alamat`) VALUES
@@ -175,12 +177,12 @@ INSERT INTO `tb_pelanggan` (`id_pelanggan`, `username`, `password`, `nama_lengka
 ('U0005', 'maulidya', '827ccb0eea8a706c4c34a16891f84e7b', 'Maulidya', 'maulidyar9@gmail.com', '085713566277', 'Jepara'),
 ('U0006', 'Dea', '827ccb0eea8a706c4c34a16891f84e7b', 'Dea', 'dea@gmail.com', '085731665772', 'Jepara'),
 ('U0007', 'lala', '827ccb0eea8a706c4c34a16891f84e7b', 'lala widy', 'lalawidy@gmail.com', '081222333444', 'jepara'),
-('U0008', 'ajiw100', '9d127228d15be02d35d734084e571731', 'Aji Wijaya', 'ajiw100@gmail.com', NULL, 'kudus');
+('U0008', 'ajiw100', '9d127228d15be02d35d734084e571731', 'Aji Wijaya', 'ajiw100@gmail.com', '0895411547434', 'kudus');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pemesanan`
+-- Struktur dari tabel `tb_pemesanan`
 --
 
 CREATE TABLE `tb_pemesanan` (
@@ -204,7 +206,7 @@ CREATE TABLE `tb_pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_pemesanan`
+-- Dumping data untuk tabel `tb_pemesanan`
 --
 
 INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_pelanggan`, `nama_penerima`, `telepon_penerima`, `alamat_tujuan`, `kode_pos`, `berat_total`, `ekspedisi`, `no_resi`, `ongkir`, `sub_bayar`, `total_bayar`, `status`, `tgl_pesan`, `tgl_bayar`, `tgl_konfirmasi`, `tgl_terima`) VALUES
@@ -216,12 +218,13 @@ INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_pelanggan`, `nama_penerima`, `te
 ('20201116P0202', 'U0007', 'lala widy', '081222333444', 'Daren', 52334, '0.05', 'jne', NULL, 10000, 5000, 15000, 'Konfirmasi', '2020-11-16 15:11:38', '2020-11-16 15:11:14', NULL, NULL),
 ('20201120P0202', 'U0006', 'Dea', '085731665772', 'daren', 54332, '0.05', 'pos', NULL, 14000, 5000, 19000, 'Diterima', '2020-11-20 20:11:53', '2020-11-20 00:00:00', '2020-11-20 00:00:00', NULL),
 ('20201125P0202', 'U0006', 'Dea', '085731665772', 'Daren', 54332, '0.05', 'tiki', NULL, 6000, 5000, 11000, 'Diterima', '2020-11-25 21:11:05', '2020-11-25 00:00:00', '2020-11-25 00:00:00', NULL),
-('20201207P0202', 'U0008', 'Aji Wijaya', '08112904711', 'Kudus', 78988, '1000', 'jne', '120928hh7387j', 36000, 24444, 60444, 'Diterima', '2020-12-07 00:00:00', '2020-12-07 00:00:00', '2020-12-08 00:00:00', '2020-12-08 00:00:00');
+('20201207P0202', 'U0008', 'Aji Wijaya', '08112904711', 'Kudus', 78988, '1000', 'jne', '120928hh7387j', 36000, 24444, 60444, 'Diterima', '2020-12-07 00:00:00', '2020-12-07 00:00:00', '2020-12-08 00:00:00', '2020-12-08 00:00:00'),
+('20201216P0202', 'U0008', 'Aji Wijaya', '0895411547434', 'Kudus', 59382, '1000', 'tiki', '2309283738HJK', 73000, 5000, 78000, 'Diterima', '2020-12-16 00:00:00', '2020-12-16 00:00:00', '2020-12-16 00:00:00', '2020-12-16 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_trolly`
+-- Struktur dari tabel `tb_trolly`
 --
 
 CREATE TABLE `tb_trolly` (
@@ -233,7 +236,7 @@ CREATE TABLE `tb_trolly` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_trolly`
+-- Dumping data untuk tabel `tb_trolly`
 --
 
 INSERT INTO `tb_trolly` (`id_trolly`, `id_pelanggan`, `id_barang`, `jumlah`, `total_harga`) VALUES
@@ -245,62 +248,62 @@ INSERT INTO `tb_trolly` (`id_trolly`, `id_pelanggan`, `id_barang`, `jumlah`, `to
 --
 
 --
--- Indexes for table `tb_admin`
+-- Indeks untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `tb_barang`
+-- Indeks untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indexes for table `tb_kategori`
+-- Indeks untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `tb_konfirmasi`
+-- Indeks untuk tabel `tb_konfirmasi`
 --
 ALTER TABLE `tb_konfirmasi`
   ADD PRIMARY KEY (`id_konfirmasi`);
 
 --
--- Indexes for table `tb_pelanggan`
+-- Indeks untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indexes for table `tb_pemesanan`
+-- Indeks untuk tabel `tb_pemesanan`
 --
 ALTER TABLE `tb_pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`);
 
 --
--- Indexes for table `tb_trolly`
+-- Indeks untuk tabel `tb_trolly`
 --
 ALTER TABLE `tb_trolly`
   ADD PRIMARY KEY (`id_trolly`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_konfirmasi`
+-- AUTO_INCREMENT untuk tabel `tb_konfirmasi`
 --
 ALTER TABLE `tb_konfirmasi`
-  MODIFY `id_konfirmasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_konfirmasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_trolly`
+-- AUTO_INCREMENT untuk tabel `tb_trolly`
 --
 ALTER TABLE `tb_trolly`
-  MODIFY `id_trolly` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_trolly` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
