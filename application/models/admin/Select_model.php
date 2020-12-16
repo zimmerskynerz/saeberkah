@@ -109,7 +109,6 @@ class Select_model extends CI_Model
         $query  = $this->db->where('no_resi !=', null);
         $query  = $this->db->where('MONTH(tgl_pesan)', $bulan);
         $query  = $this->db->where('YEAR(tgl_pesan)', $tahun);
-        $query  = $this->db->group_by('id_pemesanan');
         $query  = $this->db->get();
         return $query->row_array();
     }
